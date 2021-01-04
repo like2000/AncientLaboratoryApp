@@ -1,4 +1,4 @@
-package ch.li.k.ancientlaboratory.ui.main;
+package ch.li.k.ancientlaboratory.ui.pager;
 
 import android.content.Context;
 

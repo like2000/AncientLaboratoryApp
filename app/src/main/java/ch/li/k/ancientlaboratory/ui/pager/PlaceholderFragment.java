@@ -1,4 +1,4 @@
-package ch.li.k.ancientlaboratory.ui.main;
+package ch.li.k.ancientlaboratory.ui.pager;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
