@@ -6,6 +6,7 @@
     <data></data>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:name="ch.li.k.ancientlaboratory.SlidesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
