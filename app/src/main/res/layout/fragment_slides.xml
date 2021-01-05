@@ -6,12 +6,11 @@
     <data></data>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
         android:name="ch.li.k.ancientlaboratory.SlidesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="@dimen/fragment_horizontal_margin"
+        android:layout_marginRight="@dimen/fragment_horizontal_margin"
         app:layoutManager="LinearLayoutManager"
         tools:context=".ui.slides.SlidesFragment"
         tools:listitem="@layout/fragment_slides_item" />
