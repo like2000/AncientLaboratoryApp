@@ -9,18 +9,13 @@ import android.provider.MediaStore;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import ch.li.k.ancientlaboratory.ui.pager.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,16 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        PagerAdapter sectionsPagerAdapter = new PagerAdapter(this);
-//        ViewPager2 viewPager = findViewById(R.id.view_pager);
-//        viewPager.setAdapter(sectionsPagerAdapter);
-//
-//        TabLayout tabs = findViewById(R.id.tabs);
-//        new TabLayoutMediator(tabs, viewPager,
-//                (tab, position) -> tab.setText("OBJECT " + (position + 1))
-//        ).attach();
-//        tabs.setupWithViewPager(viewPager);
 
         FloatingActionButton fab = findViewById(R.id.fab);
 
