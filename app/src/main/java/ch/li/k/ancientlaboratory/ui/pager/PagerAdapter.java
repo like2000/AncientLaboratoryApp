@@ -1,53 +1,33 @@
 package ch.li.k.ancientlaboratory.ui.pager;
 
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.li.k.ancientlaboratory.databinding.FragmentPagerBinding;
+import ch.li.k.ancientlaboratory.ui.slides.SlidesFragment;
 
-public class PagerAdapter extends RecyclerView.Adapter<PagerAdapter.PagerViewHolder> {
+public class PagerAdapter extends FragmentStateAdapter {
 
-
+    private final Integer SLIDES_LIST_SIZE = 10;
     private final List<PagerViewModel> pagerList = new ArrayList<PagerViewModel>();
+
+    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
+    }
 
     @NonNull
     @Override
-    public PagerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        FragmentPagerBinding binding = FragmentPagerBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-
-        return new PagerViewHolder(binding);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull PagerViewHolder holder, int position) {
-        holder.binding.setPagerModel(pagerList.get(position));
-        holder.binding.executePendingBindings();
+    public Fragment createFragment(int position) {
+        return SlidesFragment.newInstance(position);
     }
 
     @Override
     public int getItemCount() {
-        return pagerList.size();
-    }
-
-//    public void setIndex(int position) {
-//        pagerList.get(position).setIndex(position);
-//        notifyDataSetChanged();
-//    }
-
-    public static class PagerViewHolder extends RecyclerView.ViewHolder {
-
-        private final FragmentPagerBinding binding;
-
-        public PagerViewHolder(@NonNull FragmentPagerBinding binding) {
-            super(binding.getRoot());
-
-            this.binding = binding;
-        }
+        return SLIDES_LIST_SIZE;
     }
 }
