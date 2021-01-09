@@ -31,7 +31,7 @@ public class SlidesFragment extends Fragment {
             R.color.blue_300, R.color.blue_500, R.color.blue_700, R.color.green_100, R.color.green_300,
             R.color.green_500, R.color.green_700
     };
-    private Integer counter = 1;
+    private Integer counter;
 
     public SlidesFragment() {
     }
