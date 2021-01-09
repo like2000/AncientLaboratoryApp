@@ -4,19 +4,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ch.li.k.ancientlaboratory.databinding.FragmentPagerBinding;
-import ch.li.k.ancientlaboratory.databinding.FragmentSlidesBinding;
 
 public class PagerAdapter extends RecyclerView.Adapter<PagerAdapter.PagerViewHolder> {
 
 
-    private List<MutableLiveData<String>> slidesList = new ArrayList<MutableLiveData<String>>();
+    private final List<PagerViewModel> pagerList = new ArrayList<PagerViewModel>();
 
     @NonNull
     @Override
@@ -28,14 +26,19 @@ public class PagerAdapter extends RecyclerView.Adapter<PagerAdapter.PagerViewHol
 
     @Override
     public void onBindViewHolder(@NonNull PagerViewHolder holder, int position) {
-        holder.binding.setPagerModel(null);
+        holder.binding.setPagerModel(pagerList.get(position));
         holder.binding.executePendingBindings();
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return pagerList.size();
     }
+
+//    public void setIndex(int position) {
+//        pagerList.get(position).setIndex(position);
+//        notifyDataSetChanged();
+//    }
 
     public static class PagerViewHolder extends RecyclerView.ViewHolder {
 

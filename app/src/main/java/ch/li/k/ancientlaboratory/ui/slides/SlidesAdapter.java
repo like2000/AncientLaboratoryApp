@@ -1,16 +1,16 @@
 package ch.li.k.ancientlaboratory.ui.slides;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import ch.li.k.ancientlaboratory.R;
-import ch.li.k.ancientlaboratory.dummy.DummyContent.DummyItem;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import ch.li.k.ancientlaboratory.R;
+import ch.li.k.ancientlaboratory.dummy.DummyContent.DummyItem;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
@@ -27,7 +27,7 @@ public class SlidesAdapter extends RecyclerView.Adapter<SlidesAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_slides_item, parent, false);
+                .inflate(R.layout.item_slides, parent, false);
         return new ViewHolder(view);
     }
 

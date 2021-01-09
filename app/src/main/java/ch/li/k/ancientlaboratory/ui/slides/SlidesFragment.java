@@ -1,23 +1,18 @@
 package ch.li.k.ancientlaboratory.ui.slides;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ch.li.k.ancientlaboratory.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import ch.li.k.ancientlaboratory.databinding.FragmentSlidesBinding;
 import ch.li.k.ancientlaboratory.dummy.DummyContent;
 
-/**
- * A fragment representing a list of Items.
- */
 public class SlidesFragment extends Fragment {
 
     // TODO: Customize parameter argument names
@@ -25,20 +20,16 @@ public class SlidesFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 2;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public SlidesFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
     public static SlidesFragment newInstance(int columnCount) {
         SlidesFragment fragment = new SlidesFragment();
         Bundle args = new Bundle();
+
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -54,19 +45,26 @@ public class SlidesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_slides, container, false);
+        @NonNull FragmentSlidesBinding binding = FragmentSlidesBinding.inflate(inflater, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new SlidesAdapter(DummyContent.ITEMS));
-        }
-        return view;
+        RecyclerView recyclerView = binding.recyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        SlidesAdapter adapter = new SlidesAdapter(DummyContent.ITEMS);
+        recyclerView.setAdapter(adapter);
+
+//        // Set the adapter
+//        if (view instanceof RecyclerView) {
+//            Context context = view.getContext();
+//            RecyclerView recyclerView = (RecyclerView) view;
+//            if (mColumnCount <= 1) {
+//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//            } else {
+//                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+//            }
+//            recyclerView.setAdapter(new SlidesAdapter(DummyContent.ITEMS));
+//        }
+//        return view;
+        return binding.getRoot();
     }
 }

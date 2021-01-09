@@ -1,6 +1,7 @@
 package ch.li.k.ancientlaboratory.ui.pager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,7 @@ import ch.li.k.ancientlaboratory.databinding.FragmentPagerBinding;
  */
 public class PagerFragment extends Fragment {
 
-    private final PagerAdapter adapter = new PagerAdapter();
-    private final List<Integer> data = new ArrayList<>();
+    private final List<PagerViewModel> data = new ArrayList<>();
 
     private FragmentPagerBinding binding;
     private PagerViewModel viewModel;
@@ -40,10 +40,20 @@ public class PagerFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        System.out.println("Happy fragment!");
+        Log.i("Info", "Initialize pager fragment");
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        PagerAdapter adapter = new PagerAdapter();
         viewPager.setAdapter(adapter);
+        System.out.println("Set adapter: " + adapter);
 
         viewModel = new ViewModelProvider(requireActivity()).get(PagerViewModel.class);
         viewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -62,10 +72,11 @@ public class PagerFragment extends Fragment {
     private void initData() {
 
         for (int i = 0; i < 10; i++) {
-            data.add(i);
+            data.add(new PagerViewModel());
+            Log.i("Info", "Set index in viewmodel to: " + i + "; viewmodel: " + viewModel);
         }
 
-        viewModel.setIndex(1);
+
     }
 
 //    @Override
